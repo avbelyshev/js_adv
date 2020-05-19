@@ -148,8 +148,8 @@ function buyTicket(flightName, buyTime, fullName, type = 0) {
     };
 }
 
-// const a = buyTicket('BH118', makeTime(5, 10), 'Petrov I. I.');
-// console.log(a);
+const a = buyTicket('BH118', makeTime(5, 10), 'Petrov I. I.');
+console.log(a);
 
 
 function displayFlights() {
@@ -200,5 +200,50 @@ function eRegistration(ticket, fullName, nowTime) {
 
 let registration = eRegistration('BH118-B50', 'Ivanov I. I.',  makeTime(15, 0));
 console.log(registration);
-registration = eRegistration('BH118-B52', 'Ivanov I. I.',  makeTime(16, 0));
-console.log(registration);
+
+/**
+ * Отчет о рейсе на данный момент
+ *
+ * @typedef {Object} Report
+ * @property {string} flight Номер рейса
+ * @property {boolean} registration Доступна регистрация на самолет
+ * @property {boolean} complete Регистрация завершена или самолет улетел
+ * @property {number} countOfSeats Общее количество мест
+ * @property {number} reservedSeats Количество купленных (забронированных) мест
+ * @property {number} registeredSeats Количество пассажиров, прошедших регистрацию
+ */
+
+/**
+ * Функция генерации отчета по рейсу
+ *
+ *  * проверка рейса
+ *  * подсчет
+ *
+ * @param {string} flight номер рейса
+ * @param {number} nowTime текущее время
+ * @returns {Report} отчет
+ */
+function flightReport(flight, nowTime) {
+    const flightObject = flights[flight];
+    if (!flightObject) throw new Error('Flight not found');
+
+    const registration = (flightObject.registrationStarts <= nowTime && flightObject.registartionEnds >= nowTime);
+    const complete = (nowTime > flightObject.registartionEnds);
+    const countOfSeats = flightObject.seats;
+    const reservedSeats = flightObject.tickets.length;
+    const registeredSeats = flightObject.tickets.filter(t => t.registrationTime).length;
+
+    const report = {
+        flight: flightObject.name,
+        registration,
+        complete,
+        countOfSeats,
+        reservedSeats,
+        registeredSeats
+    };
+    return {
+        ...report
+    };
+}
+
+console.log(flightReport('BH118',  makeTime(15, 0)));
