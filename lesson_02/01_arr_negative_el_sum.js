@@ -2,12 +2,12 @@ function negativeElementsSum(array) {
     if (!Array.isArray(array)) return new Error('Входящий параметр не является массивом!');
 
     let result = { count: 0, sum: 0 };
-    array.forEach(element => {
-        if ((typeof(element) === 'number') && (element < 0)) {
-            result.count++;
-            result.sum += element;
-        }
-    });
+    const negativeElements = array.filter(element => (typeof(element) === 'number') && (element < 0));
+
+    result.count = negativeElements.length;
+    if (result.count === 0) return result;
+    result.sum = negativeElements.reduce((sum, element) => sum + element);
+
     return result;
 }
 
