@@ -6,7 +6,8 @@
  */
 
 function charCodesSum(word) {
-    return word.split('').map(l => l.charCodeAt(0)).reduce((acc, item) => acc + item);}
+    return word.split('').reduce((acc, item) => acc + item.charCodeAt(0), 0);
+}
 
 /**
  * Функция для анализа текста. Возврашает массив объектов со структурой
@@ -18,7 +19,8 @@ function charCodesSum(word) {
  */
 
 function wordStat(text) {
-    return text.split(' ').map(word => {
+    const words = text.split(' ').filter(word => word.length);
+    return words.map(word => {
         return { word: word, sum: charCodesSum(word) };
     });
 }

@@ -7,10 +7,10 @@
 
 function sumOfPositive(arr) {
     const filtered = arr.filter(element => (typeof(element) === 'number') && (element > 0));
-    const count = filtered.length;
+    const sum = filtered.reduce((acc, item) => acc + item, 0);
 
-    if (!count) return { count: 0, sum: 0 };
-    const sum = filtered.reduce((acc, item) => acc + item);
-
-    return { sum, count };
+    return {
+        count: filtered.length,
+        sum
+    };
 }

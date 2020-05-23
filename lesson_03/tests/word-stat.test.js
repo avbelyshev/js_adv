@@ -5,6 +5,9 @@ describe('charCodesSum', () => {
     it('sum of another word character codes', () => {
         assert.equal(charCodesSum('ipsum'), 558);
     });
+    it('empty string', () => {
+        assert.equal(charCodesSum(''), 0);
+    });
 });
 
 describe('wordStat', () => {
@@ -22,5 +25,11 @@ describe('wordStat', () => {
             { word: 'Some', sum: 404 },
             { word: 'text', sum: 453 }
         ]);
+    });
+    it('empty string', () => {
+        assert.deepEqual(wordStat(''), []);
+    });
+    it('only separator', () => {
+        assert.deepEqual(wordStat(' '), []);
     });
 });
