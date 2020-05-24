@@ -13,13 +13,11 @@ describe('sumOfPositive', () => {
         assert.deepEqual(sumOfPositive(negativeNumbers), {count: 0, sum: 0});
     });
     it('array with some numbers with zero', () => {
-        let arrayWithZero = array.slice();
-        arrayWithZero.push(0);
+        let arrayWithZero = [...array, 0];
         assert.deepEqual(sumOfPositive(arrayWithZero), {count: 5, sum: 357});
     });
     it('array with some numbers with not number item', () => {
-        let arrayWithString = array.slice();
-        arrayWithString.push('string');
+        let arrayWithString = [...array, 'string'];
         assert.deepEqual(sumOfPositive(arrayWithString), {count: 5, sum: 357});
     });
     it('empty array', () => {
