@@ -23,15 +23,12 @@ function flightReport(world, flight, nowTime) {
     const reservedSeats = flightObject.tickets.length;
     const registeredSeats = flightObject.tickets.filter(t => t.registrationTime).length;
 
-    const report = {
+    return {
         flight: flightObject.name,
         registration,
         complete,
         countOfSeats,
         reservedSeats,
         registeredSeats
-    };
-    return {
-        ...report
     };
 }
