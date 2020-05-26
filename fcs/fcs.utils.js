@@ -20,17 +20,17 @@ function displayFlights() {
     console.table(flights);
 }
 
-function flightDetails(flightName) {
-    console.log(`*** Details of flight ${flightName} ***`);
-    const flight = flights[flightName];
-    if (!flight) {
-        console.warn('Flight not found');
-        return;
-    }
-
-    console.table(flight);
-    console.table(flight.tickets);
-}
+// function flightDetails(flightName) {
+//     console.log(`*** Details of flight ${flightName} ***`);
+//     const flight = flights[flightName];
+//     if (!flight) {
+//         console.warn('Flight not found');
+//         return;
+//     }
+//
+//     console.table(flight);
+//     console.table(flight.tickets);
+// }
 
 function random(from, to) {
     return Math.floor(Math.random() * (to - from) + from);
