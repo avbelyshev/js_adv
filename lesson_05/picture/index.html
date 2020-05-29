@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>events</title>
+    <style>
+        table {
+            display: block;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        table tr td {
+            width: 30px;
+            height: 30px;
+            border: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="drawing-options-block">
+    <h2>Drawing options</h2>
+    <form id="drawing-options-form">
+        <p>
+            <label>Set color
+                <input type="color" name="color">
+            </label>
+        </p>
+        <p>
+            <label>Set dimension
+                <input type="number" name="dimension">
+            </label>
+        </p>
+        <button type="submit">Apply</button>
+    </form>
+</div>
+
+<table cellspacing="0" cellpadding="0"></table>
+
+<script src="picture.js"></script>
+</body>
+
+</html>
