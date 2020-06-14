@@ -35,6 +35,6 @@ Shipyard.prototype = {
     exchange: function (ship, shipParams) {
         this.checkShipType(ship);
 
-        return this.build(shipParams);
+        return this.build(this.ShipType, shipParams);
     }
 }
