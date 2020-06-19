@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Testing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.css">
+    <!-- добавляем фреймворк тестирования mocha -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mocha/3.2.0/mocha.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <!-- добавим chai -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chai/3.5.0/chai.js"></script>
+    <script>
+        // chai предоставляет большое количество функций. Объявим assert глобально
+        var assert = chai.assert;
+        var expect = chai.expect;
+    </script>
+</head>
+<body>
+<script src="core/piers.js"></script>
+<script src="core/piers.test.js"></script>
+<script src="core/ships.js"></script>
+<script src="core/ships.test.js"></script>
+<script src="core/motor-ships.js"></script>
+<script src="core/motor-ships.test.js"></script>
+<script src="core/sailing-ships.js"></script>
+<script src="core/sailing-ships.test.js"></script>
+<script src="core/shipyards.js"></script>
+<script src="core/shipyards.test.js"></script>
+
+<!-- элемент с id="mocha" будет содержать результаты тестов -->
+<div id="mocha"></div>
+
+<!-- запускаем тесты! -->
+<script>
+    mocha.run();
+</script>
+</body>
+</html>
