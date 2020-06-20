@@ -1,9 +1,15 @@
-const CustomPromise = function (callback) {
-    this.__success__ = [];
-    this.__error__ = [];
-    this._callback = callback;
+class CustomPromise {
+    constructor(callback) {
+        this.__success__ = [];
+        this.__error__ = [];
+        this._callback = callback;
 
-    this.then = function (successCb, rejectCb) {
+        setTimeout( () => {
+            callback(this._resolve.bind(this), this._reject.bind(this));
+        }, 0)
+    }
+
+    then(successCb, rejectCb) {
         if (successCb) {
             this.__success__.push(successCb);
         }
@@ -12,19 +18,15 @@ const CustomPromise = function (callback) {
         }
     }
 
-    this.catch = function (rejectCb) {
+    catch(rejectCb) {
         this.then(null, rejectCb);
     }
 
-    this._resolve = function (result) {
+    _resolve(result) {
         this.__success__.forEach( cb => cb(result) );
     }
 
-    this._reject = function (err) {
+    _reject(err) {
         this.__error__.forEach( cb => cb(err) );
     }
-
-    setTimeout( () => {
-        callback(this._resolve.bind(this), this._reject.bind(this));
-    }, 0)
 }
