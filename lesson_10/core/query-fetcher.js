@@ -1,15 +1,13 @@
-class GifsSearch {
-    constructor(url, api_key) {
-        this.url = url;
-        this.api_key = api_key;
+class QueryFetcher {
+    constructor() {
         this.cache = {};
     }
 
-    getResult(query) {
-        if (this.cache[query]) {
+    getResult(url) {
+        if (this.cache[url]) {
             return;
         }
-        return fetch(`${this.url}?q=${query}&api_key=${this.api_key}`).then(result => {
+        return fetch(url).then(result => {
             if (result.ok) {
                 return result.json();
             }
@@ -17,29 +15,19 @@ class GifsSearch {
         })
     }
 
-    async search(query) {
-        if (this.cache[query]) {
-            return this.cache[query];
+    async resultProcessing(url) {
+        if (this.cache[url]) {
+            return this.cache[url];
         }
 
         try {
-            const result = await this.getResult(query);
-            this.cache[query] = result.data;
+            const result = await this.getResult(url);
+            this.cache[url] = result.data;
             return result.data;
         } catch (err) {
             console.error('Something happened:', err);
         }
     }
-
-    renderGifs(root, data) {
-        root.innerHTML = '';
-
-        for (let key in data) {
-            const gif = new Image();
-            gif.src = data[key].images.fixed_height_small_still.url;
-            root.append(gif);
-        }
-    };
 
     debounce(func, timeOut) {
         let lastCall = null;
