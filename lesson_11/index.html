@@ -5,7 +5,26 @@
     <title>Title</title>
 </head>
 <body>
+<form id="form">
+    <label>User name:
+        <input type="text" id="user" />
+    </label><br>
+    <label>Chat room:
+        <input type="text" id="channel" />
+    </label><br>
+    <button type="button" id="login">Log in</button><br>
+    <button type="button" id="logout">Log out</button><br>
+    <button type="button" id="exit">Exit</button><br>
+</form>
+
+<div id="messages"></div>
+
+<form id="message-form">
+    <input type="text" id="text"><br>
+    <button type="button" id="send-message">Send message</button>
+</form>
 
 <script src="websocket.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
